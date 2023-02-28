@@ -1,13 +1,14 @@
-import express, { Router } from 'express'
+import express, { Express, Router } from 'express'
 import cors from 'cors'
 import departmentsRoutes from './routes/departments.routes'
 import employeesRoutes from './routes/employees.routes'
 import productsRoutes from './routes/products.routes'
+import http from 'http'
 
 class App {
-  app: express.Application
-  routes: any[] = []
-  server: any
+  app: Express
+  routes: {path: string, routes: Router}[] = []
+  server: http.Server
 
   constructor() {
     this.app = express()
